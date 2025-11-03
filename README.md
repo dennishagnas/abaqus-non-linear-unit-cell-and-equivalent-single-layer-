@@ -1,14 +1,13 @@
-# abaqus-non-linear-unit-cell-and-equivalent-single-layer 
+# Abaqus Non-linear Unit Cell and Equivalent Single Layer Scripts 
 
 This repository contains the Python and Fortran scripts, as well as Abaqus input files used in [1]. The code is newer version of what was developed in my master's thesis [2] and should be regarded as the superior version. 
 
 ## Table of Contents
-
-    - [Authorship and Licensing](#authorship-and-licensing)
-    - [Repository Structure](#repository-structure)
-    - [Dependencies](#dependencies)
-    - [Running the Unit Cell Analysis Scripts](#running-the-unit-cell-analysis-scripts)
-    - [Performing a Non-linear ESL Analysis in Abaqus](#performing-a-non-linear-esl-analysis-in-abaqus)
+- [Authorship and Licensing](#authorship-and-licensing)
+- [Repository Structure](#repository-structure)
+- [Dependencies](#dependencies)
+- [Running the Unit Cell Analysis Scripts](#running-the-unit-cell-analysis-scripts)
+- [Performing a Non-linear ESL Analysis in Abaqus](#performing-a-non-linear-esl-analysis-in-abaqus)
 
 ## Authorship and Licensing
 
@@ -102,12 +101,11 @@ The script will create 12 unit cell models with appropriate boundary conditions 
 
 5. **Run `UnitCellPostProcessor.py` from the command window, PowerShell or similar.**
 The script will interpolate the load responses to pre-defined strain points, calculate the stiffness properties, and output 
-```sh
+
 - `stiffnessMatrix_panelName.f`     - Contains the non-linear stiffness matrix to be copied to the UGENS subroutine.
 - `sectionDefinition_panelName.txt`  - Contains the general shell section definition to be copied to the Abaqus Analysis input file.
 - `loadResponse.pdf`                 - Plot of load responses as functions of driving strain components.
 - `stiffness.pdf`                    - Non-linear stiffness matrix presented in graphical form.
-```
 
 ## Performing a Non-linear ESL Analysis in Abaqus
 
@@ -119,7 +117,7 @@ Specify the Riks solver. See the provided input files in this repository for app
 2. **Copy the contents of `stiffnessMatrix_panelName.f` to `UGENS-NL-ESL.f`.**
 The four versions of the script differ only in the stiffness matrix definition.
 
-3. **Run the analysis from the command window by executing the following command in the directory where the analysis file is located.**
+3. **Run the analysis from the command window by executing the following command in the directory where the analysis file is located:**
 ```sh
 abaqus job=esl_job_name user=UGENS-NL-ESL.f
 ```
@@ -130,8 +128,8 @@ To ensure stability of the method, please see the included input files and [2, 3
 
 ## References
 
-[1] Hagnäs, D., Remes, H., Mancini, F and Romanoff, J. (under review). Analysis of Distorted Stiffened Panels under Uniaxial Loading Using Non-linear Equivalent Single Layer Formulation. 
+[1] Hagnäs, D., Remes, H., Mancini, F and Romanoff, J. (under review). Analysis of Distorted Stiffened Panels under Uniaxial Loading Using Non-linear Equivalent Single Layer Formulation. \
 
-[2] Hagnäs, D. (2025). Modelling of stiffened panels with local distortions using equivalent single layer method [master's thesis]. Espoo, Finland. Aalto University School of Engineering. Available at: https://urn.fi/URN:NBN:fi:aalto-202506094328
+[2] Hagnäs, D. (2025). Modelling of stiffened panels with local distortions using equivalent single layer method [master's thesis]. Espoo, Finland. Aalto University School of Engineering. Available at: https://urn.fi/URN:NBN:fi:aalto-202506094328 \
 
 [3] Reinaldo Gonçalves, B., Jelovica, J. and Romanoff, J. (2016). Abaqus UGENS subroutine for nonlinear analysis of periodic panels. Aalto University publication series SCIENCE + TECHNOLOGY 9/2016. Helsinki, Finland, Aalto University School of Engineering. Available at: https://urn.fi/URN:ISBN:978-952-60-6905-0
